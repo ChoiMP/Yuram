@@ -105,6 +105,52 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: -6818742206311477452, guid: b5d3b3dec8b61554faf0c612f6f77ec2, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 8
+  - m_Name: Dark Mage
+    m_Hash: 373079647
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Head
+      m_Hash: 130111906
+      m_Sprite: {fileID: -6243137422576219010, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -6243137422576219010, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+    - m_Name: LeftHand
+      m_Hash: 913699692
+      m_Sprite: {fileID: -3667817369054298451, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -3667817369054298451, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+    - m_Name: LeftArm
+      m_Hash: 730008282
+      m_Sprite: {fileID: 5995836387356626572, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5995836387356626572, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+    - m_Name: Body
+      m_Hash: 999990412
+      m_Sprite: {fileID: -2919733290110049362, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2919733290110049362, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+    - m_Name: RightHand
+      m_Hash: 905530672
+      m_Sprite: {fileID: 9164026502556240648, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 9164026502556240648, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+    - m_Name: RigntArm
+      m_Hash: 619905671
+      m_Sprite: {fileID: 2676978608517810728, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2676978608517810728, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+    - m_Name: LeftLeg
+      m_Hash: 101577729
+      m_Sprite: {fileID: 2127177035937685593, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2127177035937685593, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+    - m_Name: RightLeg
+      m_Hash: 104663548
+      m_Sprite: {fileID: 7794648480689733071, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 7794648480689733071, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 8
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 638610949775210223
+  m_ModificationHash: 638620337247110758
   m_Version: 1

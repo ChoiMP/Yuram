@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &894192500741124728
+--- !u!1 &6774829058620729460
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4271374340603380398}
-  - component: {fileID: 2564729330273140392}
-  - component: {fileID: -5606620031726714860}
+  - component: {fileID: 3199162246287110755}
+  - component: {fileID: 3286426026507285844}
+  - component: {fileID: 4146635078211006095}
+  - component: {fileID: 4424594251917765694}
   m_Layer: 0
-  m_Name: Iron_Guardian
+  m_Name: Wizard_baseAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4271374340603380398
+--- !u!4 &3199162246287110755
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894192500741124728}
+  m_GameObject: {fileID: 6774829058620729460}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2734873, y: -1.3085155, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.1332768, y: 2.4550161, z: 0.051644128}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2564729330273140392
+--- !u!212 &3286426026507285844
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894192500741124728}
+  m_GameObject: {fileID: 6774829058620729460}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,47 +75,63 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ab78cb1585eadc24ea019884633b9059, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 1027130645, guid: abe8da9c00ed24747be7dc74b22ac3e8, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.8125, y: 2.8125}
+  m_Size: {x: 0.26, y: 0.27}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5606620031726714860
+--- !u!114 &4146635078211006095
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894192500741124728}
+  m_GameObject: {fileID: 6774829058620729460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd47fd7f52f6e6b4893896b1b7dd2013, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a0c0333252e30a4b90d4d3f9b3574b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  f_Hp: 1
-  curHp: 0
-  f_Mp: 1
-  curMp: 0
-  regenerateMp: 1
-  f_Damege: 1
-  curDamege: 0
-  attackDelay: 1
-  curAttackDelay: 0
-  f_Speed: 1
-  curSpeed: 0
+  apply_Unit: {fileID: 0}
   attackLayer:
     serializedVersion: 2
-    m_Bits: 0
-  attackRange: 1
-  unitImage: {fileID: 2564729330273140392}
-  attack_Perfab: {fileID: 8146892353426368840, guid: 25fcb5a0a1d62a24cb3afa45bdd29c96, type: 3}
-  attack_obj: {fileID: 0}
-  skill_Perfab: {fileID: -7720786487295429792, guid: dab449af9d88cba4cbd82a92654f1f97, type: 3}
-  skill_obj: {fileID: 0}
-  curTarget: {fileID: 0}
+    m_Bits: 128
+  skill_Tartget: []
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  showGizmo: 0
+  skillName: baseAttack_Wizard
+  skillRange: {x: 0, y: 0}
+  skillDamegeRatio: 0
+  speed: 1
+  cc_duration: 0
+  cc_Ratio: 0
+  Sturn: 0
+  Slow: 0
+  Position: 0
+--- !u!95 &4424594251917765694
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774829058620729460}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3cd763598a64d2e47ac43d67e860d8e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

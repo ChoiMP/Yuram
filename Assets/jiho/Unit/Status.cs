@@ -142,6 +142,8 @@ public class Status : MonoBehaviour
 
     }
 
+
+
     //=====================군 중 제 어 =========================
     public void Apply_Skill_CCC(string cc, Skill s)
     {

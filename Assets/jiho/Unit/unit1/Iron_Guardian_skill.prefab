@@ -97,16 +97,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a0c0333252e30a4b90d4d3f9b3574b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  apply_Unit: {fileID: -5606620031726714860, guid: 57813aae2a357d546be6a4e36f6b0fec, type: 3}
+  apply_Unit: {fileID: 0}
   attackLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   skill_Tartget: []
   gizmoColor: {r: 1, g: 0, b: 0, a: 1}
   showGizmo: 0
   skillName: "\uC2A4\uD0AC\uC774\uB984"
   skillRange: {x: 1, y: 1}
   skillDamegeRatio: 1.8
+  speed: 0
   cc_duration: 1
   cc_Ratio: 1
   Sturn: 1

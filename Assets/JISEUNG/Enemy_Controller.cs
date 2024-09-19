@@ -7,6 +7,7 @@ public class Enemy_Controller : MonoBehaviour
     public GameObject player;
     public float speed;
 
+    Vector2 dir;
     private void Start()
     {
         player = GameObject.Find("Player");
@@ -14,7 +15,12 @@ public class Enemy_Controller : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed);
+        //transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed);
+
+        dir = player.transform.position - transform.position;
+        dir=dir.normalized;
+
+        transform.Translate(dir * speed);
     }
     
     private void OnTriggerEnter2D(Collider2D collision)

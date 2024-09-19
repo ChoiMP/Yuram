@@ -706,13 +706,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nyang Variant
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: c9428aafc83c70843b3b40316ad51f99, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: -8089108032486474258, guid: c9428aafc83c70843b3b40316ad51f99, type: 3}
       propertyPath: m_SortingOrder
       value: 33
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: c9428aafc83c70843b3b40316ad51f99, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.51
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: c9428aafc83c70843b3b40316ad51f99, type: 3}
       propertyPath: m_LocalPosition.y
@@ -890,6 +894,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: c9428aafc83c70843b3b40316ad51f99, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5488401183828779517}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: c9428aafc83c70843b3b40316ad51f99, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8251005367996084394}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: c9428aafc83c70843b3b40316ad51f99, type: 3}
 --- !u!4 &2024934710330140055 stripped
 Transform:
@@ -958,6 +965,41 @@ MonoBehaviour:
     showGizmo: 1
   - color: {r: 0, g: 1, b: 0, a: 1}
     showGizmo: 1
+--- !u!114 &8251005367996084394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7732894209636889037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a914c84739f228478cfeff565c7b707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  f_Hp: 100
+  curHp: 0
+  f_Mp: 80
+  curMp: 0
+  regenerateMp: 0
+  f_Damege: 5
+  curDamege: 0
+  attackDelay: 1
+  curAttackDelay: 0
+  f_Speed: 5
+  curSpeed: 0
+  attackLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  attackRange: 3.5
+  unitImage: {fileID: 0}
+  isMain: 0
+  follow_Unit: {fileID: 0}
+  attack_Perfab: {fileID: 5225442994084985897, guid: 18ab10e8aefbd7f489ede5c44d331a29, type: 3}
+  attack_obj: {fileID: 0}
+  skill_Perfab: {fileID: 8953255041238160082, guid: bdc3f04938493e14da10e5afdac2ab41, type: 3}
+  skill_obj: {fileID: 0}
+  curTarget: {fileID: 0}
 --- !u!4 &8631023092687179836 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7246150745553485748, guid: c9428aafc83c70843b3b40316ad51f99, type: 3}

@@ -397,7 +397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039295619147183435}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.00509493, w: 0.99998707}
+  m_LocalRotation: {x: -0, y: -0, z: 0.0050948854, w: 0.99998707}
   m_LocalPosition: {x: 0.3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -702,13 +702,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedMage Variant
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: e69403829d1673041abeea13ec66a8f0, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: -8542050491279379417, guid: e69403829d1673041abeea13ec66a8f0, type: 3}
       propertyPath: m_SortingOrder
       value: 35
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: e69403829d1673041abeea13ec66a8f0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.8
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: e69403829d1673041abeea13ec66a8f0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -792,7 +796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3843219143733427380, guid: e69403829d1673041abeea13ec66a8f0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.1173653
+      value: 0.1173654
       objectReference: {fileID: 0}
     - target: {fileID: 3843219143733427380, guid: e69403829d1673041abeea13ec66a8f0, type: 3}
       propertyPath: m_LocalRotation.y
@@ -808,7 +812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5089882002138438461, guid: e69403829d1673041abeea13ec66a8f0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000029795709
+      value: 0.00000011173391
       objectReference: {fileID: 0}
     - target: {fileID: 5995169379789135303, guid: e69403829d1673041abeea13ec66a8f0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -873,6 +877,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: e69403829d1673041abeea13ec66a8f0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1263596232862331609}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: e69403829d1673041abeea13ec66a8f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4189318715785067604}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: e69403829d1673041abeea13ec66a8f0, type: 3}
 --- !u!4 &1009000976035889069 stripped
 Transform:
@@ -959,6 +966,41 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4189318715785067604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6544961836056036311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ac354c407eef34c84d69e318b1e1af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  f_Hp: 100
+  curHp: 0
+  f_Mp: 80
+  curMp: 0
+  regenerateMp: 1
+  f_Damege: 20
+  curDamege: 0
+  attackDelay: 1
+  curAttackDelay: 0
+  f_Speed: 5
+  curSpeed: 0
+  attackLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  attackRange: 3.5
+  unitImage: {fileID: 0}
+  isMain: 0
+  follow_Unit: {fileID: 0}
+  attack_Perfab: {fileID: 4146635078211006095, guid: bd168fe5199a8014cb6510b33a2d6c85, type: 3}
+  attack_obj: {fileID: 0}
+  skill_Perfab: {fileID: 1180224050156234918, guid: 1ba9113550d44ca47b56012c5568671a, type: 3}
+  skill_obj: {fileID: 0}
+  curTarget: {fileID: 0}
 --- !u!4 &7522828534351617758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3843219143733427380, guid: e69403829d1673041abeea13ec66a8f0, type: 3}

@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class Unit : Status
 {
-    public string unitName;
-    public int Lv = 1;
     public SpriteRenderer unitImage;
 
+    [Header("이동 관련")]
+    float x;
+    float y;
+    public bool isMain=false;
+    [Header("메인 유닛이 아닌 경우 따라가야하는 오브젝트 유닛")]
+    public Transform follow_Unit;//따라가야하는 유닛
 
     [Header("일반 공격 이펙트 && 생성된 일반공격 오브젝트")]
     [SerializeField] protected Skill attack_Perfab;
@@ -18,9 +22,7 @@ public class Unit : Status
     [Header("스킬 오브젝트 프리펩 && 생성된 스킬 오브젝트")]
     [SerializeField] protected Skill skill_Perfab;
     public Skill skill_obj;//생성된 스킬 오브젝트
-    [SerializeField] bool is_skill_Available = false;//스킬 사용가능 여부
 
-    Vector2 arrivePos = Vector2.zero;//도착할 위치
     [SerializeField] Status curTarget;
     public override void Start()
     {
@@ -34,6 +36,7 @@ public class Unit : Status
 
     public void init()
     {
+        Follow_Manager.instance.add_list_Unit(this);
         curHp = f_Hp;
         GetComponent<Unit>().enabled = true;
     }
@@ -44,46 +47,45 @@ public class Unit : Status
         FindEnemy();
         Attack();
         UnitMove();
+        RegenerateMp_F();
 
-    }
 
-    //========이동 관련======//
-    public void setMovePos(Vector2 newPos)//GameManager에서 이동할 위치 정해줌
-    {
-        arrivePos = newPos;
+        print("attack_Obj==" + attack_obj + "@@@   skill_Obj==" + skill_obj);
 
     }
 
     void UnitMove()//공격을 하지않았을때
     {
-        if (arrivePos != Vector2.zero)
+        if(isMain)
         {
-            if (arrivePos != (Vector2)transform.position)//움직이는 중
-            {
-                transform.position = Vector2.MoveTowards(transform.position, arrivePos, curSpeed);
-            }
+            x = Input.GetAxisRaw("Horizontal");
+            y = Input.GetAxisRaw("Vertical");
+
+            transform.Translate(new Vector2(x, y) * curSpeed * Time.deltaTime);
+        }
+        else
+        {
+            Vector3 direction = (transform.position - follow_Unit.position).normalized;
+            Vector2 targetPosition = follow_Unit.position + direction;
+
+            // 오브젝트가 목표 위치로 이동
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, curSpeed);
+
 
         }
 
 
-
     }
 
-
-
-
-    public void Synthesis()//합성
+    void RegenerateMp_F()
     {
-        Lv++;
-
-        if (Lv == 1)
+        if(curMp<f_Mp)
         {
-            is_skill_Available = true;
+            curMp += regenerateMp*Time.deltaTime;
         }
 
+        
     }
-
-
 
     //======== 전투 관련 ======//
 
@@ -129,11 +131,6 @@ public class Unit : Status
                 {
                     AttackEffect_Generation(curTarget);
                     curTarget.GetDamege(this);
-                    if (is_skill_Available)
-                    {
-                        curMp += regenerateMp;
-                    }
-
                 }
             }
         }

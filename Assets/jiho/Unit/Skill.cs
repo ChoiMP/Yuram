@@ -13,11 +13,14 @@ public class Skill : Skill_Algorithm
     [SerializeField] public Vector2 skillRange;
     [Header("스킬계수")]
     [SerializeField] public float skillDamegeRatio;
+    [Header("투차체 일 경우")]
+    public float speed;
 
-    [Header("====스킬 군중제어 효과 관련====")]
-    public WaitForSeconds CC_Timer;
+
+    [Header("==스킬 군중제어 효과 관련==")]
     public float cc_duration;//cc지속시간
     public float cc_Ratio;//cc계수
+    public WaitForSeconds CC_Timer;
     [SerializeField] bool Sturn, Slow, Position;
 
 
@@ -36,11 +39,12 @@ public class Skill : Skill_Algorithm
     public void SkillEffect_Generation(Unit u, Status target)//스킬 생성
     {
 
+
         if (apply_Unit == null)
         {
             apply_Unit = u;
-        }
 
+        }
 
         if (apply_Unit.skill_obj == null)
         {
@@ -53,6 +57,9 @@ public class Skill : Skill_Algorithm
             apply_Unit.skill_obj.gameObject.SetActive(true);
 
         }
+
+       
+
 
         apply_Unit.UseSkill();
     }

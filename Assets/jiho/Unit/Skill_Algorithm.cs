@@ -30,7 +30,7 @@ public class Skill_Algorithm : MonoBehaviour
      감지하는 형태의 스킬들 모음
    
      */
-    // 제라스 q   
+    // ============================제라스 q   ======================================
     public List<Status> Straight_Skill(Skill skillObject)
     {
         overlapColider = Physics2D.OverlapBoxAll(transform.position, skillObject.skillRange, 0);
@@ -46,8 +46,10 @@ public class Skill_Algorithm : MonoBehaviour
 
         return skill_Tartget;
     }
+    // ============================제라스 q   ======================================
 
-    //알리스타q
+
+    //=========================알리스타q=============================
     public List<Status> Circle_Skill(Skill skillObject)
     {
         overlapColider = Physics2D.OverlapCircleAll(transform.position, skillObject.skillRange.x, attackLayer);
@@ -62,9 +64,49 @@ public class Skill_Algorithm : MonoBehaviour
 
         return skill_Tartget;
     }
+    //=========================알리스타q=============================
 
+    //=====================스몰더 W===================================
+    public void Straight_Projectile_Skill(Skill skillObject)
+    {
+        StartCoroutine(Straight_Projectile_Skill_corutine(skillObject));
+    }
 
-    void Colider_to_Status(Collider2D [] collider)
+    IEnumerator Straight_Projectile_Skill_corutine(Skill skillObject)
+    {
+        float t = 0;
+
+        Vector2 dir= skillObject.skill_Tartget[0].transform.position - skillObject.transform.position;
+
+      // Vector2 dir = Vector2.left;
+        while (t<10)
+        {
+            skillObject.transform.Translate(dir * skillObject.speed * Time.deltaTime);
+            print("fireball이동중");
+            if (t<3)
+            {
+                t += Time.deltaTime;
+                yield return null;
+            }
+            else
+            {
+                skillObject.gameObject.SetActive(false);
+                break;
+            }
+        }
+
+    }
+    //=====================스몰더 W===================================
+
+    //===================힐===============================
+    public void HealUnit(Status unit , Skill skill)
+    {
+        unit.RetrunHP += unit.curDamege * skill.skillDamegeRatio;
+    }
+
+    //===================힐===============================
+
+    void Colider_to_Status(Collider2D [] collider)//OverlapCircleAll의 콜라이더형을 Status형식으로 바꿈
     {
         skill_Tartget.Clear();
         for (int i = 0; i < collider.Length; i++)

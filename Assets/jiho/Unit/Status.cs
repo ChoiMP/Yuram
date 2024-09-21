@@ -140,6 +140,15 @@ public class Status : MonoBehaviour
 
         }
 
+        if(curHp<=0)
+        {
+            gameObject.SetActive(false);
+            if(this.gameObject.layer ==7)
+            {
+                GameManager.instance.xp++;
+            }
+        }
+
     }
 
 

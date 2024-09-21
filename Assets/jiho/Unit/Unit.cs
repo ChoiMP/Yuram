@@ -10,7 +10,7 @@ public class Unit : Status
     [Header("이동 관련")]
     float x;
     float y;
-    public bool isMain=false;
+    public bool isMain = false;
     [Header("메인 유닛이 아닌 경우 따라가야하는 오브젝트 유닛")]
     public Transform follow_Unit;//따라가야하는 유닛
 
@@ -24,6 +24,9 @@ public class Unit : Status
     public Skill skill_obj;//생성된 스킬 오브젝트
 
     [SerializeField] Status curTarget;
+
+    [SerializeField] Animator animator;
+
     public override void Start()
     {
         base.Start();
@@ -31,6 +34,8 @@ public class Unit : Status
 
 
         unitImage = GetComponent<SpriteRenderer>();
+
+        animator = GetComponent<Animator>();
 
     }
 
@@ -56,12 +61,17 @@ public class Unit : Status
 
     void UnitMove()//공격을 하지않았을때
     {
-        if(isMain)
+        if (isMain)
         {
             x = Input.GetAxisRaw("Horizontal");
             y = Input.GetAxisRaw("Vertical");
 
             transform.Translate(new Vector2(x, y) * curSpeed * Time.deltaTime);
+
+            foreach (Unit unit in Follow_Manager.instance.all_sponed_Unit)
+            {
+                unit.animator.SetBool("IsWalking", !(x == 0 && y == 0));
+            }
         }
         else
         {
@@ -73,27 +83,36 @@ public class Unit : Status
 
 
         }
-
-
+        if (curTarget)
+        {
+            transform.localScale = new Vector3(curTarget.transform.position.x >= transform.position.x ? 1 : -1, 1, 1);
+        }
     }
 
     void RegenerateMp_F()
     {
-        if(curMp<f_Mp)
+        if (curMp < f_Mp)
         {
-            curMp += regenerateMp*Time.deltaTime;
+            curMp += regenerateMp * Time.deltaTime;
         }
 
-        
+
     }
 
     //======== 전투 관련 ======//
 
     public Collider2D[] FindEnemy()
     {
+        if (curTarget)
+        {
+            if (curTarget.gameObject.activeSelf)
+            {
+                curTarget = null;
+            }
+        }
         // 지정된 위치와 반경 내에 있는 attackLayer의 첫 번째 Collider2D 찾기
         Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, attackRange, attackLayer);
-
+        
         // 감지된 콜라이더가 있는지 확인
         if (collider.Length != 0 && curTarget == null)
         {
@@ -125,12 +144,14 @@ public class Unit : Status
                         skill_Perfab.SkillEffect_Generation(this, curTarget);
 
                     }
+                    animator.SetTrigger("Skill");
 
                 }
                 else//일반 공격
                 {
                     AttackEffect_Generation(curTarget);
                     curTarget.GetDamege(this);
+                    animator.SetTrigger("Attack");
                 }
             }
         }

@@ -2003,6 +2003,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knight Variant
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: b5d3b3dec8b61554faf0c612f6f77ec2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: -7961566360976059719, guid: b5d3b3dec8b61554faf0c612f6f77ec2, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -2199,6 +2203,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: b5d3b3dec8b61554faf0c612f6f77ec2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2180997966685139545}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: b5d3b3dec8b61554faf0c612f6f77ec2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2186507470469414167}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: b5d3b3dec8b61554faf0c612f6f77ec2, type: 3}
 --- !u!4 &1258165154564232468 stripped
 Transform:
@@ -2318,6 +2325,41 @@ MonoBehaviour:
       m_Hash: 0
       m_Sprite: {fileID: -6243137422576219010, guid: 265ec316dcb3871409fd1922ee8a9c33, type: 3}
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 3cd623fd3f1e2e549a40346f38b85f00, type: 3}
+--- !u!114 &2186507470469414167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056000713896630982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f8774f309d868b4bb2d087a2592640d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  f_Hp: 150
+  curHp: 0
+  f_Mp: 50
+  curMp: 0
+  regenerateMp: 0
+  f_Damege: 10
+  curDamege: 0
+  attackDelay: 1
+  curAttackDelay: 0
+  f_Speed: 5
+  curSpeed: 0
+  attackLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  attackRange: 3.5
+  unitImage: {fileID: 0}
+  isMain: 0
+  follow_Unit: {fileID: 0}
+  attack_Perfab: {fileID: 5125070483234987475, guid: fd28faaac555fd54cb4205a92b6b19d4, type: 3}
+  attack_obj: {fileID: 0}
+  skill_Perfab: {fileID: 3379563652625840280, guid: 426e99c5562e5264fb14fcca945c85c5, type: 3}
+  skill_obj: {fileID: 0}
+  curTarget: {fileID: 0}
 --- !u!4 &6804961872605681774 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 980913403909481237, guid: b5d3b3dec8b61554faf0c612f6f77ec2, type: 3}

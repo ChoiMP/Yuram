@@ -11,6 +11,9 @@ public class Unit : Status
     float x;
     float y;
     public bool isMain = false;
+    public enum CurStatus {move,attack,find,just_Home }
+    public CurStatus curstatus=CurStatus.move;
+
     [Header("메인 유닛이 아닌 경우 따라가야하는 오브젝트 유닛")]
     public Transform follow_Unit;//따라가야하는 유닛
 
@@ -23,16 +26,21 @@ public class Unit : Status
     [SerializeField] protected Skill skill_Perfab;
     public Skill skill_obj;//생성된 스킬 오브젝트
 
+    [Header("따라갈 적")]
+    [SerializeField] Status findTarget;
+
     [SerializeField] Status curTarget;
 
     [SerializeField] Animator animator;
-
+    [Header("따라갈 유닛의 포지션 offset")]
+    [SerializeField] Vector2 offset_pos;
     public override void Start()
     {
         base.Start();
         init();
 
 
+        Follow_Manager.instance.add_list_Unit(this);
         unitImage = GetComponent<SpriteRenderer>();
 
         animator = GetComponent<Animator>();
@@ -41,16 +49,28 @@ public class Unit : Status
 
     public void init()
     {
-        Follow_Manager.instance.add_list_Unit(this);
+        
         curHp = f_Hp;
         GetComponent<Unit>().enabled = true;
+
+        //랜덤 위치 초기화
+        int x = Random.Range(-3, 3);
+        int y = Random.Range(-3, 3);
+        offset_pos = new Vector2(x, y);
     }
 
     void Update()
     {
+        if(curstatus == CurStatus.attack)
+        {
+            Attack();
+        }
 
-        FindEnemy();
-        Attack();
+        if (curstatus != CurStatus.just_Home)
+        {
+            FindEnemy();
+        }
+      
         UnitMove();
         RegenerateMp_F();
 
@@ -75,11 +95,26 @@ public class Unit : Status
         }
         else
         {
-            Vector3 direction = (transform.position - follow_Unit.position).normalized;
-            Vector2 targetPosition = follow_Unit.position + direction;
+            if (curTarget != null)
+                if (curTarget.gameObject.activeSelf == false)
+                    curTarget = null;
 
-            // 오브젝트가 목표 위치로 이동
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, curSpeed);
+
+            if (findTarget != null)
+                if (findTarget.gameObject.activeSelf == false)
+                    findTarget = null;
+
+
+            if (curstatus==CurStatus.move || curstatus == CurStatus.just_Home)
+            {
+                // 오브젝트가 목표 위치로 이동
+                transform.position = Vector3.MoveTowards(transform.position, follow_Unit.transform.position + (Vector3)offset_pos, curSpeed);
+                if(Vector2.Distance(transform.position,follow_Unit.transform.position)<3)
+                {
+                    curstatus = CurStatus.attack;
+                }
+            }
+         
 
 
         }
@@ -103,27 +138,53 @@ public class Unit : Status
 
     public Collider2D[] FindEnemy()
     {
-        if (curTarget)
+
+        if(!isMain)
         {
-            if (curTarget.gameObject.activeSelf)
+            if (Vector2.Distance(transform.position, follow_Unit.transform.position) > 5)//거리가 5보다 멀어지면 메인 플레이어로 이동
             {
-                curTarget = null;
+                curstatus = CurStatus.just_Home;
             }
         }
+
+
+
         // 지정된 위치와 반경 내에 있는 attackLayer의 첫 번째 Collider2D 찾기
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, attackRange, attackLayer);
-        
+        Collider2D[] find_collider = Physics2D.OverlapCircleAll(transform.position, attackRange * 2, attackLayer);
+        Collider2D collider = Physics2D.OverlapCircle(transform.position, attackRange, attackLayer);
+
         // 감지된 콜라이더가 있는지 확인
-        if (collider.Length != 0 && curTarget == null)
+        if (find_collider.Length != 0 && curTarget == null)
         {
-            curTarget = collider[0].GetComponent<Status>();
+            findTarget = find_collider[0].GetComponent<Status>();
+           
+            if(!isMain)
+            {
+                //발견한 적으로 이동
+                transform.position = Vector2.MoveTowards(transform.position, findTarget.transform.position, 0.05f);
+            }
+            
+
+
+
+            curstatus = CurStatus.attack;
         }
-        else if (collider.Length == 0)
+        else if (find_collider.Length == 0)
+        {
+            findTarget = null;
+            curstatus = CurStatus.move;
+        }
+
+        if (collider != null)
+        {
+            curTarget = collider.GetComponent<Status>(); ;
+        }
+        else
         {
             curTarget = null;
         }
 
-        return collider;
+        return find_collider;
     }
 
     public void Attack()

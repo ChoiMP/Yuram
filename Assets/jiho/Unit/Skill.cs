@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Skill : Skill_Algorithm
 {
-
+    public AudioSource audioSource;
+    public AudioClip attack_Sound;
 
     [Header("스킬 이름")]
     public string skillName;
@@ -27,7 +28,8 @@ public class Skill : Skill_Algorithm
 
     private void Awake()
     {
-        CC_Timer = new WaitForSeconds(cc_duration);
+        audioSource.clip = attack_Sound;
+           CC_Timer = new WaitForSeconds(cc_duration);
     }
 
     private void Update()
@@ -58,8 +60,9 @@ public class Skill : Skill_Algorithm
 
         }
 
-       
 
+        //공격 생성시에 공격 사운드 실행
+        audioSource.Play();
 
         apply_Unit.UseSkill();
     }

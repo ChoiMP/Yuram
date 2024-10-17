@@ -1323,7 +1323,7 @@ MonoBehaviour:
   player: {fileID: 0}
   xpText: {fileID: 1808082851}
   xp: 0
-  nextLevel: 10
+  nextLevel: 2147483647
 --- !u!4 &1272276624
 Transform:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ using System;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using Unity.VisualScripting;
+using TMPro;
 
 public class ItemSelectManager : MonoBehaviour
 {
@@ -16,14 +17,14 @@ public class ItemSelectManager : MonoBehaviour
 
     private float time = 10f;
     public Image timerBar;
-    public Text timerText;
+    public TextMeshProUGUI timerText;
 
     private int randTrigger;
     List<int> randNumList = new List<int>();
     private int randNum;
 
     private int itemTrigger;
-    private int maxItemCount = 3; //¼±ÅÃ À¯¹° °³¼ö 
+    private int maxItemCount = 3; //ì„ íƒ ìœ ë¬¼ ê°œìˆ˜ 
     List<int> itemNumList = new List<int>();
     private int itemNum;
 
@@ -89,12 +90,12 @@ public class ItemSelectManager : MonoBehaviour
     void SelectBoxTimerBar()
     {
         timerBar.fillAmount = time / 10f;
-        timerText.text = "³²Àº ½Ã°£: " + time.ToString("N1") + "ÃÊ";
+        timerText.text = "ë‚¨ì€ ì‹œê°„: " + time.ToString("N1") + "ì´ˆ";
 
     }
 
     
-    void SetNum() // À¯¹° ¹èÄ¡ÇÒ À§Ä¡ ¼³Á¤
+    void SetNum() // ìœ ë¬¼ ë°°ì¹˜í•  ìœ„ì¹˜ ì„¤ì •
     {
         if (randTrigger == 1)
         {          
@@ -114,7 +115,7 @@ public class ItemSelectManager : MonoBehaviour
         }
     }
 
-    void SetItemNum() //¼±ÅÃ À¯¹° ¹øÈ£ ¼³Á¤
+    void SetItemNum() //ì„ íƒ ìœ ë¬¼ ë²ˆí˜¸ ì„¤ì •
     {
         if (itemTrigger == 1)
         {
@@ -134,7 +135,7 @@ public class ItemSelectManager : MonoBehaviour
     }
 
 
-    public void SetItmes() //À¯¹° ¹èÄ¡
+    public void SetItmes() //ìœ ë¬¼ ë°°ì¹˜
     {
         if (isSelectMode)
         {
@@ -150,7 +151,7 @@ public class ItemSelectManager : MonoBehaviour
         }
     }
 
-    public void SetItemsInit() //¹èÄ¡ ÃÊ±âÈ­
+    public void SetItemsInit() //ë°°ì¹˜ ì´ˆê¸°í™”
     {
         /*for (int i = 0; i < selectPos.Length; i++)
         {

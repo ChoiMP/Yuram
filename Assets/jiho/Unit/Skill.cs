@@ -28,8 +28,9 @@ public class Skill : Skill_Algorithm
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         audioSource.clip = attack_Sound;
-           CC_Timer = new WaitForSeconds(cc_duration);
+        CC_Timer = new WaitForSeconds(cc_duration);
     }
 
     private void Update()

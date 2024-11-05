@@ -17,11 +17,28 @@ public class fighter : Unit
 
         if (tartgetEnemy.Count != 0)
         {
+            Status closestEnemy = null;
+            float closestDistance = float.MaxValue;
+            Vector3 currentPosition = this.transform.position;
+
+            // 가장 가까운 적 찾기
             for (int i = 0; i < tartgetEnemy.Count; i++)
             {
-                tartgetEnemy[i].GetComponent<Status>().GetDamege(this, skill_obj);
-                print(skill_obj.skillName + "스킬을 사용해서" + tartgetEnemy[i].name + "에게 데미지를 입혔습니다");
+               
+                float distance = Vector3.Distance(currentPosition, tartgetEnemy[i].transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestEnemy = tartgetEnemy[i];
+                }
+            }
 
+            // 가장 가까운 적에게만 데미지 적용
+            if (closestEnemy != null)
+            {
+                skill_obj.transform.position = closestEnemy.transform.position;
+                  closestEnemy.GetComponent<Status>().GetDamege(this, skill_obj);
+                print(skill_obj.skillName + "스킬을 사용해서" + closestEnemy.name + "에게 데미지를 입혔습니다");
             }
         }
 

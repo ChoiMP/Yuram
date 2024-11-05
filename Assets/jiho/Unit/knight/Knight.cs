@@ -26,6 +26,7 @@ public class Knight : Unit
                 for (int i = 0; i < tartgetEnemy.Count; i++)
                 {
                     tartgetEnemy[i].GetComponent<Status>().GetDamege(this, skill_obj);
+                    tartgetEnemy[i].transform.position += new Vector3(0.1f, 0, 0);
                     print(skill_obj.skillName + "스킬을 사용해서" + tartgetEnemy[i].name + "에게 데미지를 입혔습니다");
 
                 }

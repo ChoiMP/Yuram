@@ -76,7 +76,24 @@ public class Skill_Algorithm : MonoBehaviour
     {
         float t = 0;
 
-        Vector2 dir= skillObject.skill_Tartget[0].transform.position - skillObject.transform.position;
+
+        Status closestEnemy = null;
+        float closestDistance = float.MaxValue;
+        Vector3 currentPosition = this.transform.position;
+
+        // 가장 가까운 적 찾기
+        for (int i = 0; i < skill_Tartget.Count; i++)
+        {
+
+            float distance = Vector3.Distance(currentPosition, skill_Tartget[i].transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestEnemy = skill_Tartget[i];
+            }
+        }
+
+        Vector2 dir= closestEnemy.transform.localPosition - skillObject.transform.localPosition;
 
       // Vector2 dir = Vector2.left;
         while (t<10)

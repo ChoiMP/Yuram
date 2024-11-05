@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Skill : Skill_Algorithm
 {
+    public ParticleSystem particleSystem;
     public AudioSource audioSource;
     public AudioClip attack_Sound;
 
@@ -24,10 +25,30 @@ public class Skill : Skill_Algorithm
     public WaitForSeconds CC_Timer;
     [SerializeField] bool Sturn, Slow, Position;
 
+    private void OnEnable()
+    {
+        if (GetComponent<ParticleSystem>())
+        {
+            particleSystem = GetComponent<ParticleSystem>();
+            particleSystem.Play();
+            Invoke("enable_Particle", 1);
+        }
 
+
+    }
+
+    public void enable_Particle()
+    {
+        particleSystem.gameObject.SetActive(false);
+    }
 
     private void Awake()
     {
+        if (GetComponent<ParticleSystem>())
+        {
+            particleSystem = GetComponent<ParticleSystem>();
+        }
+   
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = attack_Sound;
         CC_Timer = new WaitForSeconds(cc_duration);
@@ -35,7 +56,15 @@ public class Skill : Skill_Algorithm
 
     private void Update()
     {
+        if(particleSystem!=null)
+        {
+            if (particleSystem.isStopped)
+            {
+                gameObject.SetActive(false);
 
+            }
+        }
+        
 
     }
 
@@ -100,5 +129,11 @@ public class Skill : Skill_Algorithm
         gameObject.SetActive(false);
     }
 
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(speed!=0)
+        {
+            collision.GetComponent<Status>().GetDamege(apply_Unit);
+        }
+    }
 }

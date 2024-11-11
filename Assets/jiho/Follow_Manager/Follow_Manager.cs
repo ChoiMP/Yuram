@@ -21,6 +21,7 @@ public class Follow_Manager : MonoBehaviour
 
     public void add_list_Unit(Unit u)
     {
+        all_sponed_Unit.Add(u);
 
         for (int i=0; i< all_sponed_Unit.Count; i++)
         {

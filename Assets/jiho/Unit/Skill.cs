@@ -131,7 +131,7 @@ public class Skill : Skill_Algorithm
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(speed!=0)
+        if(speed!=0 && collision.GetComponent<Status>() != null)
         {
             collision.GetComponent<Status>().GetDamege(apply_Unit);
         }

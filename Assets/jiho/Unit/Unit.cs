@@ -109,7 +109,7 @@ public class Unit : Status
             {
                 // 오브젝트가 목표 위치로 이동
                 transform.position = Vector3.MoveTowards(transform.position, follow_Unit.transform.position + (Vector3)offset_pos, curSpeed);
-                if(Vector2.Distance(transform.position,follow_Unit.transform.position)<3)
+                if(Vector2.Distance(transform.position,follow_Unit.transform.position)<5)
                 {
                     curstatus = CurStatus.attack;
                 }

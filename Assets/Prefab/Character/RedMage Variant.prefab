@@ -981,7 +981,7 @@ MonoBehaviour:
   f_Hp: 100
   curHp: 0
   f_Mp: 80
-  curMp: 0
+  curMp: 70
   regenerateMp: 1
   f_Damege: 20
   curDamege: 0

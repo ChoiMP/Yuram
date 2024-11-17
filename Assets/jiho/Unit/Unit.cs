@@ -6,7 +6,7 @@ using UnityEngine;
 public class Unit : Status
 {
     public SpriteRenderer unitImage;
-
+    public int lv=1;
     [Header("이동 관련")]
     float x;
     float y;

@@ -109,7 +109,7 @@ MonoBehaviour:
   curDamege: 0
   attackDelay: 0
   curAttackDelay: 0
-  f_Speed: 1
+  f_Speed: 0.1
   curSpeed: 0
   attackLayer:
     serializedVersion: 2

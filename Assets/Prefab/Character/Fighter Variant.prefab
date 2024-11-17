@@ -546,7 +546,7 @@ MonoBehaviour:
   f_Hp: 120
   curHp: 0
   f_Mp: 60
-  curMp: 0
+  curMp: 50
   regenerateMp: 1.5
   f_Damege: 15
   curDamege: 0
@@ -557,7 +557,7 @@ MonoBehaviour:
   attackLayer:
     serializedVersion: 2
     m_Bits: 128
-  attackRange: 3.5
+  attackRange: 1
   unitImage: {fileID: 0}
   isMain: 0
   curstatus: 0

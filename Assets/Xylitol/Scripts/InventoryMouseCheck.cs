@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class InventoryMouseCheck : MonoBehaviour
 {
@@ -11,9 +13,17 @@ public class InventoryMouseCheck : MonoBehaviour
     public Text relicName;
     public Text relicEffect;
 
+    public Camera uiCam;
+
+    public GameObject MouseOnEffect;
+
 
     void Start()
     {
+        textBox.transform.localScale = Vector3.zero;
+        textBox.transform.localPosition = Vector3.zero;
+
+        MouseOnEffect.SetActive(false);
         InitText();
     }
 
@@ -23,14 +33,23 @@ public class InventoryMouseCheck : MonoBehaviour
         {
             textBox.transform.localScale = Vector3.one;
 
-            textBox.transform.position = Input.mousePosition + new Vector3(200, 120);
+            float x = Input.mousePosition.x + 200f;
+            float y = Input.mousePosition.y + 120f;
+            float z = 1f;
+            textBox.transform.position = uiCam.ScreenToWorldPoint(new Vector3(x, y, z));
+
+            MouseOnEffect.transform.position = uiCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, z));
+            MouseOnEffect.SetActive(true);
+         
+            Debug.Log(Input.mousePosition);
         }
         else
         {
             textBox.transform.localScale = Vector3.zero;
+            MouseOnEffect.SetActive(false);
+
             InitText();
         }
-
     }  
 
     private bool IsPointerOverUI()
@@ -46,6 +65,7 @@ public class InventoryMouseCheck : MonoBehaviour
             if (results[i].gameObject.layer == LayerMask.NameToLayer("UI"))
                 if (results[i].gameObject.tag == "Relic")
                 {
+
                     if (results[i].gameObject.name.Contains("hp"))
                         TextInBoxManage("hp");
                     else if (results[i].gameObject.name.Contains("mp"))

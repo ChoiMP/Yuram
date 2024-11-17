@@ -92,6 +92,7 @@ public class Unit : Status
             {
                 unit.animator.SetBool("IsWalking", !(x == 0 && y == 0));
             }
+
         }
         else
         {
@@ -104,19 +105,15 @@ public class Unit : Status
                 if (findTarget.gameObject.activeSelf == false)
                     findTarget = null;
 
-
             if (curstatus==CurStatus.move || curstatus == CurStatus.just_Home)
             {
-                // 오브젝트가 목표 위치로 이동
-                transform.position = Vector3.MoveTowards(transform.position, follow_Unit.transform.position + (Vector3)offset_pos, curSpeed);
-                if(Vector2.Distance(transform.position,follow_Unit.transform.position)<3)
-                {
-                    curstatus = CurStatus.attack;
-                }
+                 // 오브젝트가 목표 위치로 이동
+                 transform.position = Vector3.MoveTowards(transform.position, follow_Unit.transform.position + (Vector3)offset_pos, curSpeed);
+                 if(Vector2.Distance(transform.position,follow_Unit.transform.position)<3)
+                 {
+                     curstatus = CurStatus.attack;
+                 }
             }
-         
-
-
         }
         if (curTarget)
         {
@@ -139,13 +136,13 @@ public class Unit : Status
     public Collider2D[] FindEnemy()
     {
 
-        if(!isMain)
+    /*    if(!isMain)
         {
             if (Vector2.Distance(transform.position, follow_Unit.transform.position) > 5)//거리가 5보다 멀어지면 메인 플레이어로 이동
             {
                 curstatus = CurStatus.just_Home;
             }
-        }
+        }*/
 
 
 

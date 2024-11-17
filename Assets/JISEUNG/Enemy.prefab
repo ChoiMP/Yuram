@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7171458666448140456}
   - component: {fileID: 4846173880840525199}
   - component: {fileID: 6358751010823220743}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,9 +114,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackRange: 0
+  isLongAttack: 0
+  attack_Prefab: {fileID: 0}
+  attack_obj: {fileID: 0}
   player_List: []
   player: {fileID: 0}
-  speed: 1
 --- !u!61 &4846173880840525199
 BoxCollider2D:
   m_ObjectHideFlags: 0

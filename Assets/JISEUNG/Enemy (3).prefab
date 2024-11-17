@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3724451989218708779}
   - component: {fileID: 5557928644978976645}
   - component: {fileID: -8932760681162415061}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,6 +114,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   attackRange: 0
+  isLongAttack: 0
+  attack_Prefab: {fileID: 0}
+  attack_obj: {fileID: 0}
   player_List: []
   player: {fileID: 0}
 --- !u!61 &5557928644978976645

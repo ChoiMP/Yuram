@@ -18,4 +18,6 @@ public class CameraController : MonoBehaviour
         Vector3 pos = player.transform.position;
         this.transform.position = new Vector3(pos.x, pos.y, -10);
     }
+
+   
 }

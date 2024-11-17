@@ -30,6 +30,9 @@ public class ItemSelectManager : MonoBehaviour
     public Transform[] selectPos;
     public GameObject[] items;
 
+    public GameObject boxOpenEffect;
+    public GameObject uiCam;
+
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
@@ -37,6 +40,8 @@ public class ItemSelectManager : MonoBehaviour
         selectBox.transform.localScale = Vector3.zero;
         randTrigger = 1;
         itemTrigger = 1;
+
+        boxOpenEffect.SetActive(false);
 
     }
 
@@ -52,20 +57,21 @@ public class ItemSelectManager : MonoBehaviour
     {
         if ((player.playerXp % 5) == 0)
         {
-            //selectBox.SetActive(true);
             selectBox.transform.localScale = Vector3.one;
             isSelectMode = true;
+            boxOpenEffect.SetActive(true);
         }
     }
 
     public void SelectBoxOff() 
     {
         SetItemsInit();
-        //selectBox.SetActive(false); 
         selectBox.transform.localScale = Vector3.zero;
         randTrigger = 1;
         itemTrigger = 1;
         isSelectMode = false;
+        boxOpenEffect.SetActive(false);
+
     }
 
     public void SelectBoxTimer()
@@ -151,21 +157,19 @@ public class ItemSelectManager : MonoBehaviour
 
     public void SetItemsInit() //배치 초기화
     {
-        /*for (int i = 0; i < selectPos.Length; i++)
+        for(int i=0; i < selectPos.Length; i++)
         {
-            *//* if (selectPos[i].GetChild(0).gameObject != null)
-             {
-                 Destroy(selectPos[i].GetChild(0).gameObject);
-             }*//*
-
-            Debug.Log(selectPos[i].GetChild(0).gameObject);
-        }*/
-
-       // Debug.Log(selectPos[randNum].GetChild(0).gameObject);
-       // Destroy(selectPos[randNum].GetChild(0).gameObject);
-
+            foreach (Transform child in selectPos[i])
+            {
+                Destroy(child.gameObject);
+            }
+        }
+      
         randNumList.Clear();
         itemNumList.Clear();
+        
+
+
         time = 10f;
 
 

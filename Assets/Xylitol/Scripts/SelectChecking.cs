@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class SelectChecking : MonoBehaviour, IPointerClickHandler
 {
@@ -13,17 +16,36 @@ public class SelectChecking : MonoBehaviour, IPointerClickHandler
 
     InventoryManager inven;
 
+    public GameObject selectEffect;
+    public Camera uiCam;
+    private Vector3 target;
+
     public static GameObject clickedObject;
+
     void Start()
     {
         gm = GameObject.Find("GameManager").gameObject;
         player = GameObject.Find("Player").gameObject;
         inven = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
+
     }
 
     void Update()
     {
+        CreateEffect();
     }
+
+    void CreateEffect()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                Vector2 mousePos = Input.mousePosition;
+                target = uiCam.ScreenToWorldPoint(mousePos);
+            }        
+        }
+    } 
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -37,9 +59,8 @@ public class SelectChecking : MonoBehaviour, IPointerClickHandler
 
         if (clickedObject.name.Contains("_Item"))
         {
-            //player.GetComponent<PlayerStatus >().SpeedUpManager();
-            gm.GetComponent<ItemSelectManager>().SelectBoxOff();
-
+            Instantiate(selectEffect, target, Quaternion.identity);
+            StartCoroutine(CloseBox());
 
             if (clickedObject.name.Contains("HP"))
             {
@@ -73,8 +94,14 @@ public class SelectChecking : MonoBehaviour, IPointerClickHandler
                 inven.ItemTypeChcek("Speed");
                 inven.AddToInventory();
                 inven.CountBoxControl(14);
-
             }
+        }
+
+        IEnumerator CloseBox()
+        {
+            yield return new WaitForSeconds(0.3f);
+            gm.GetComponent<ItemSelectManager>().SelectBoxOff();
+
         }
 
 

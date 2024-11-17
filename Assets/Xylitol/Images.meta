@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 301bc6cf94e147646850ffd31af1f4f5
+<<<<<<<< HEAD:Assets/Xylitol/Prefab/Character.meta
+guid: 43fc3bb036d9db049ae9059aa438743e
+========
+guid: 1906560e56184ed4089494d7eef7ef54
+>>>>>>>> origin/xylitol1:Assets/Xylitol/Images.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -82,7 +82,6 @@ public class ItemSelectManager : MonoBehaviour
                 SetItemsInit();
                 randTrigger = 1;
                 itemTrigger = 1;
-                time = 10f;
             }
         }
 
@@ -167,7 +166,8 @@ public class ItemSelectManager : MonoBehaviour
        // Destroy(selectPos[randNum].GetChild(0).gameObject);
 
         randNumList.Clear();
-        itemNumList.Clear();    
+        itemNumList.Clear();
+        time = 10f;
 
 
     }

@@ -23,7 +23,8 @@ public class Unit : Status
 
 
     [Header("스킬 오브젝트 프리펩 && 생성된 스킬 오브젝트")]
-    [SerializeField] protected Skill skill_Perfab;
+    [SerializeField] public Skill skill_Perfab;
+    public List<Skill> all_skill_obj;//생성된 스킬 오브젝트
     public Skill skill_obj;//생성된 스킬 오브젝트
 
     [Header("따라갈 적")]
@@ -202,10 +203,12 @@ public class Unit : Status
                 {
                     if (skill_Perfab != null)
                     {
-                        skill_Perfab.SkillEffect_Generation(this, curTarget);
+                        StartCoroutine(nextSkill_Corutine());
+                       
+                        animator.SetTrigger("Skill");
 
                     }
-                    animator.SetTrigger("Skill");
+                   
 
                 }
                 else//일반 공격
@@ -223,7 +226,15 @@ public class Unit : Status
     }
 
 
-
+    IEnumerator nextSkill_Corutine()
+    {
+        for (int i = 0; i < lv; i++)
+        {
+            skill_Perfab.SkillEffect_Generation(this, curTarget);
+            yield return new WaitForSeconds(0.2f);
+        }
+      
+    }
 
 
     public override void GetDamege(Status s, Skill skill = null)

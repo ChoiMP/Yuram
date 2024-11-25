@@ -9710,7 +9710,7 @@ MonoBehaviour:
   skillName: fireball
   skillRange: {x: 10, y: 10}
   skillDamegeRatio: 0
-  speed: 3
+  speed: 5
   cc_duration: 0
   cc_Ratio: 0
   Sturn: 0

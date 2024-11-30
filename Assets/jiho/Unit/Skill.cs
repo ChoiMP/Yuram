@@ -18,6 +18,9 @@ public class Skill : Skill_Algorithm
     [Header("투차체 일 경우")]
     public float speed;
 
+    //lv에 따라 여러번 쓰는 스킬들
+    float nextSkill_Waittime;//다음 스킬까지의 시간
+    float curtimer;
 
     [Header("==스킬 군중제어 효과 관련==")]
     public float cc_duration;//cc지속시간
@@ -78,26 +81,42 @@ public class Skill : Skill_Algorithm
 
         }
 
-        if (apply_Unit.skill_obj == null)
+        if (apply_Unit.all_skill_obj.Count == 0)
         {
-            apply_Unit.skill_obj = Instantiate(gameObject, target.transform.position, Quaternion.identity).GetComponent<Skill>();
-
+            apply_Unit.all_skill_obj.Add(Instantiate(apply_Unit.skill_Perfab, target.transform.position, Quaternion.identity).GetComponent<Skill>());
+            apply_Unit.skill_obj = apply_Unit.all_skill_obj[0];
         }
         else
         {
-            apply_Unit.skill_obj.transform.position = target.transform.position;
-            apply_Unit.skill_obj.gameObject.SetActive(true);
+
+            for (int j = 0; j < apply_Unit.all_skill_obj.Count; j++)
+            {
+                if (apply_Unit.all_skill_obj[j].gameObject.activeSelf == false)
+                {
+                    apply_Unit.all_skill_obj[j].transform.position = target.transform.position;
+
+                    apply_Unit.skill_obj = apply_Unit.all_skill_obj[j];
+                    apply_Unit.skill_obj.gameObject.SetActive(true);
+                    break;
+                }
+                else if (apply_Unit.all_skill_obj.Count - 1 == j)
+                {
+                    apply_Unit.all_skill_obj.Add(Instantiate(apply_Unit.skill_Perfab, target.transform.position, Quaternion.identity).GetComponent<Skill>());
+
+                    apply_Unit.skill_obj = apply_Unit.all_skill_obj[apply_Unit.all_skill_obj.Count - 1];
+                    break;
+                }
+            }
+
+
+            apply_Unit.UseSkill();
+            //공격 생성시에 공격 사운드 실행
+            audioSource.Play();
+
 
         }
 
-
-        //공격 생성시에 공격 사운드 실행
-        audioSource.Play();
-
-        apply_Unit.UseSkill();
     }
-
-
 
 
     public void Apply_Skill_CC(List<Status> apply_Status = null)

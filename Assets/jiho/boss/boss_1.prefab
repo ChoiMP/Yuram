@@ -72,7 +72,8 @@ MonoBehaviour:
   projectileSpeed: 5
   delayBetweenProjectiles: 0.2
   isRunCorutine: 0
-  wide_area_object: {fileID: 0}
+  wide_area_object: {fileID: 8322961837055617921, guid: c86773c99514c47488e98a816a93737b, type: 3}
+  spon_WideArea_objectpooling: []
 --- !u!212 &5246796564208174210
 SpriteRenderer:
   m_ObjectHideFlags: 0

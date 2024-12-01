@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Wide_Area_Attack : MonoBehaviour
 {
-
+    public GameObject Boss_Explosion;
     public Status boss;
     public List<Status> unit;
     // Start is called before the first frame update
@@ -19,11 +19,17 @@ public class Wide_Area_Attack : MonoBehaviour
 
     public void Attack()
     {
-        for(int i=0; i<unit.Count; i++)
+        Boss_Explosion.SetActive(true);
+        for (int i=0; i<unit.Count; i++)
         {
             unit[i].GetDamege(boss);
         }
         unit.Clear();
+        
+    }
+
+    public void enable_Obj()
+    {
         gameObject.transform.parent.gameObject.SetActive(false);
     }
 

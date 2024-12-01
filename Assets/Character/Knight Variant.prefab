@@ -2339,7 +2339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_Hp: 150
   curHp: 0
-  f_Mp: 50
+  f_Mp: 2
   curMp: 40
   regenerateMp: 1
   f_Damege: 10
@@ -2353,12 +2353,16 @@ MonoBehaviour:
     m_Bits: 128
   attackRange: 2
   unitImage: {fileID: 0}
+  lv: 1
   isMain: 0
   curstatus: 0
   follow_Unit: {fileID: 0}
   attack_Perfab: {fileID: 5125070483234987475, guid: fd28faaac555fd54cb4205a92b6b19d4, type: 3}
   attack_obj: {fileID: 0}
+  all_Skill_Perfab:
+  - {fileID: 6955839904385324834, guid: 9f20cc149dd8a374680fb29507b9f4fe, type: 3}
   skill_Perfab: {fileID: 6955839904385324834, guid: 9f20cc149dd8a374680fb29507b9f4fe, type: 3}
+  all_skill_obj: []
   skill_obj: {fileID: 0}
   findTarget: {fileID: 0}
   curTarget: {fileID: 0}

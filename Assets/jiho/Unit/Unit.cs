@@ -23,6 +23,7 @@ public class Unit : Status
 
 
     [Header("스킬 오브젝트 프리펩 && 생성된 스킬 오브젝트")]
+    [SerializeField] public List<Skill> all_Skill_Perfab;
     [SerializeField] public Skill skill_Perfab;
     public List<Skill> all_skill_obj;//생성된 스킬 오브젝트
     public Skill skill_obj;//생성된 스킬 오브젝트
@@ -62,6 +63,13 @@ public class Unit : Status
 
     void Update()
     {
+        if(lv > all_Skill_Perfab.Count)
+        {
+            lv=all_Skill_Perfab.Count;
+        }
+
+
+
         if(curstatus == CurStatus.attack)
         {
             Attack();
@@ -75,8 +83,6 @@ public class Unit : Status
         UnitMove();
         RegenerateMp_F();
 
-
-        print("attack_Obj==" + attack_obj + "@@@   skill_Obj==" + skill_obj);
 
     }
 
@@ -190,6 +196,11 @@ public class Unit : Status
 
     public void Attack()
     {
+        if(skill_Perfab != all_Skill_Perfab[lv-1])
+        {
+            skill_Perfab = all_Skill_Perfab[lv - 1];
+            all_skill_obj.Clear();
+        }
 
         if (curHp >= 0 && curAttackDelay >= attackDelay)
         {

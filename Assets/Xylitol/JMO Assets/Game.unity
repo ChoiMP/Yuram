@@ -278,6 +278,17 @@ Transform:
   - {fileID: 2055107540}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &352137463 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2007595143750219648, guid: 0f8e771458c47544a955ac1e3d2de80f, type: 3}
+  m_PrefabInstance: {fileID: 1395682475}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &437129902 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6544961836056036311, guid: 4210940a74d42da4aa0e3ba575ac9560, type: 3}
@@ -849,6 +860,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1185866697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4680510173981184610, guid: 0f8e771458c47544a955ac1e3d2de80f, type: 3}
+  m_PrefabInstance: {fileID: 1395682475}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1185866701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185866697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543574213c580a74d8ebbe8f0a2efc34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  increase_HP_Value: 10
+  increase_MP_Value: 10
+  increase_SKILL_Value: 1
+  increase_SPEED_Value: 0.05
+  increase_POWER_Value: 0.1
+  applied_HP_Value: 0
+  applied_MP_Value: 0
+  applied_SKILL_Value: 0
+  applied_SPEED_Value: 0
+  applied_POWER_Value: 0
 --- !u!4 &1195081309 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4954844993251000997, guid: e4dcdf5d95e35fa43940c6550c68782e, type: 3}
@@ -1017,6 +1055,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1066289201943851526, guid: 0f8e771458c47544a955ac1e3d2de80f, type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 352137463}
+    - target: {fileID: 1066289201943851526, guid: 0f8e771458c47544a955ac1e3d2de80f, type: 3}
       propertyPath: selectPos.Array.data[0]
       value: 
       objectReference: {fileID: 1395682478}
@@ -1099,7 +1141,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4680510173981184610, guid: 0f8e771458c47544a955ac1e3d2de80f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1185866701}
   m_SourcePrefab: {fileID: 100100000, guid: 0f8e771458c47544a955ac1e3d2de80f, type: 3}
 --- !u!224 &1395682476 stripped
 RectTransform:

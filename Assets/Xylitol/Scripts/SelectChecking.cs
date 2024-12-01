@@ -71,7 +71,7 @@ public class SelectChecking : MonoBehaviour, IPointerClickHandler
                 inven.ItemTypeChcek("HP");
                 inven.AddToInventory();
                 inven.CountBoxControl(10);
-                for (int i=0; i <= unitCount; i++)
+                for (int i=0; i < unitCount; i++)
                 {
                     int hpValue = RelicStatus.instance.increase_HP_Value;
                     fm.all_sponed_Unit[i].RetrunHP += hpValue;
@@ -84,7 +84,7 @@ public class SelectChecking : MonoBehaviour, IPointerClickHandler
                 inven.ItemTypeChcek("MP");
                 inven.AddToInventory();
                 inven.CountBoxControl(11);
-                for (int i = 0; i <= unitCount; i++)
+                for (int i = 0; i < unitCount; i++)
                 {
                     int mpValue= RelicStatus.instance.increase_MP_Value;
                     fm.all_sponed_Unit[i].ReturnMP += mpValue;
@@ -97,7 +97,7 @@ public class SelectChecking : MonoBehaviour, IPointerClickHandler
                 inven.ItemTypeChcek("Power");
                 inven.AddToInventory();
                 inven.CountBoxControl(12);
-                for (int i = 0; i <= unitCount; i++)
+                for (int i = 0; i < unitCount; i++)
                 {
                     float powerValue = fm.all_sponed_Unit[i].ReturnF_Damage * RelicStatus.instance.increase_POWER_Value;
                     fm.all_sponed_Unit[i].ReturnCurrentDamage += powerValue;
@@ -110,7 +110,7 @@ public class SelectChecking : MonoBehaviour, IPointerClickHandler
                 inven.ItemTypeChcek("Skill");
                 inven.AddToInventory();
                 inven.CountBoxControl(13);
-                for (int i = 0; i <= unitCount; i++)
+                for (int i = 0; i < unitCount; i++)
                 {
                     int skillValue = RelicStatus.instance.increase_SKILL_Value;
                     fm.all_sponed_Unit[i].lv += skillValue;
@@ -123,7 +123,7 @@ public class SelectChecking : MonoBehaviour, IPointerClickHandler
                 inven.ItemTypeChcek("Speed");
                 inven.AddToInventory();
                 inven.CountBoxControl(14);
-                for (int i = 0; i <= unitCount; i++)
+                for (int i = 0; i < unitCount; i++)
                 {
                     float speedValue = fm.all_sponed_Unit[i].ReturnCurrentSpeed * RelicStatus.instance.increase_SPEED_Value;
                     fm.all_sponed_Unit[i].ReturnCurrentSpeed += speedValue;

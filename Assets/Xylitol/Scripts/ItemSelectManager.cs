@@ -6,6 +6,7 @@ using System;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using Unity.VisualScripting;
+using TMPro;
 
 public class ItemSelectManager : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class ItemSelectManager : MonoBehaviour
 
     private float time = 10f;
     public Image timerBar;
-    public Text timerText;
+    public TextMeshProUGUI timerText;
 
     private int randTrigger;
     List<int> randNumList = new List<int>();
@@ -31,7 +32,8 @@ public class ItemSelectManager : MonoBehaviour
     public GameObject[] items;
 
     public GameObject boxOpenEffect;
-    public GameObject uiCam;
+    public GameObject particle;
+    public Camera uiCam;
 
     void Start()
     {
@@ -59,7 +61,14 @@ public class ItemSelectManager : MonoBehaviour
         {
             selectBox.transform.localScale = Vector3.one;
             isSelectMode = true;
+            Vector3 ScreenCenter = new Vector3(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2, 1);
+             boxOpenEffect.transform.position = uiCam.ScreenToWorldPoint(ScreenCenter);
             boxOpenEffect.SetActive(true);
+            if (boxOpenEffect.transform.childCount == 0)
+            {
+                GameObject ptc = Instantiate(particle);
+                ptc.transform.parent = boxOpenEffect.transform; 
+            }
         }
     }
 

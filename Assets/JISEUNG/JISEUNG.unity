@@ -1255,6 +1255,7 @@ MonoBehaviour:
   - {fileID: 848112478}
   spawn_Enemy:
   - {fileID: 5948233148495011853, guid: bbd3f93b69279fd4f8ae607ceef28228, type: 3}
+<<<<<<< Updated upstream
   spawn_Time: 60
   spawned_Enemy: []
   spawn_Count: 0
@@ -1265,6 +1266,16 @@ MonoBehaviour:
   bat_Prefab: {fileID: 1312434246232400918, guid: c0f32f39cbc9f4d4a869a8d46fc4549d, type: 3}
   bat_Count: 30
   bat_Time: 1
+=======
+  - {fileID: 7872372776721203750, guid: c6557340e8653c647bf07d211becf714, type: 3}
+  - {fileID: 642499943411590051, guid: 6908917785e6e3340bd34038b495d5ef, type: 3}
+  spawn_Time: 3
+  spawned_Enemy: []
+  spawn_Count: 0
+  enemyPrefab: {fileID: 3030537000438181702, guid: c383243e17ae8074a8c5d46a4e21aaaa, type: 3}
+  enemyCount: 40
+  radius: 4
+>>>>>>> Stashed changes
   cameraCenter: {x: 0, y: 0}
 --- !u!1 &2062134715
 GameObject:

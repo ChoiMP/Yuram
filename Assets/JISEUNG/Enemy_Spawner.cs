@@ -31,6 +31,7 @@ public class Enemy_Spawner : MonoBehaviour
     public float bat_Time = 10f; // 박쥐 스폰 시간
 
     public Vector2 cameraCenter;
+    public GameObject[] player_List;
 
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class Enemy_Spawner : MonoBehaviour
     }
     private void Start()
     {
+        player_List = GameObject.FindGameObjectsWithTag("Player");
         spawned_Enemy = new List<GameObject>();
         spawn_Count = 0;
     }
@@ -47,7 +49,10 @@ public class Enemy_Spawner : MonoBehaviour
     {  
         if(bat_Time <= 0)
         {
-            GameObject player = GameObject.Find("Player");
+            int num = Random.Range(0, player_List.Length);
+            GameObject player = player_List[num];
+
+            //GameObject player = GameObject.Find("Player");
             int spawn_Point_Num = Random.Range(0, spanwer_Point.Length);
 
             Vector2 pos = new Vector2(spanwer_Point[spawn_Point_Num].transform.position.x, spanwer_Point[spawn_Point_Num].transform.position.y);

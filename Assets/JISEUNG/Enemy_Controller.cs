@@ -42,7 +42,11 @@ public class Enemy_Controller : Status
 
     private void OnEnable()
     {
-        dir = player.transform.position - transform.position;
+        if(player != null)
+        {
+            dir = player.transform.position - transform.position;
+        }
+        
     }
 
     // Update is called once per frame
@@ -92,6 +96,7 @@ public class Enemy_Controller : Status
                 {
                     setOff_Time = 5f;
                     transform.position = new Vector3(0, 0, 0);
+                    player = null;
                     gameObject.SetActive(false);
                 }
                 else { setOff_Time -= Time.deltaTime; }

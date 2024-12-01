@@ -6,6 +6,16 @@ public class Knight : Unit
 {
     public override void UseSkill()
     {
+        switch (lv)
+        {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
+        
         base.UseSkill();
         StartCoroutine(repit_Skill());
         //skill_Perfab.Skill_Generation(this,transform.position);

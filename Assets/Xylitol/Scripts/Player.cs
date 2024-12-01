@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     {
         Move();
         Rotate();
-        GunFire();
+        //GunFire();
     }
 
     void Move()
@@ -77,19 +77,19 @@ public class Player : MonoBehaviour
 
     }
 
-    void GunFire()
+    /*void GunFire()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bullet, gunPos.position, gunPos.rotation);
         }
-    }
+    }*/
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.tag == "Item")
         {
-            // Debug.Log("¾ÆÀÌÅÛ");
+            // Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
             collision.transform.localScale = Vector3.zero;
             collision.transform.tag = "Untagged";
             collision.transform.GetComponent<CircleCollider2D>().enabled = false;

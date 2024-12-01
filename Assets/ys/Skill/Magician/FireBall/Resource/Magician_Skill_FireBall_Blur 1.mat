@@ -8,22 +8,23 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Magician_Skill_FireBall_Blur 1
-  m_Shader: {fileID: -6465566751694194690, guid: 75d33cf8e974d8f4689ea7793050b8b6, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 1a1fb1229a66bea4f92ab2524375d005, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHAPREMULTIPLY_ON
   - _ALPHATEST_ON
-  - _CFXR_EDGE_FADING
-  - _CFXR_UV_DISTORTION
   - _FADING_ON
   m_InvalidKeywords:
   - _
   - _CFXR_DITHERED_SHADOWS_OFF
+  - _CFXR_EDGE_FADING
+  - _CFXR_GLOW_POW_P0
   - _CFXR_HDR_BOOST
   - _CFXR_OVERLAYBLEND_RGBA
   - _CFXR_OVERLAYTEX_OFF
   - _CFXR_SINGLE_CHANNEL
+  - _CFXR_UV_DISTORTION
   - _SINGLECHANNEL_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -73,6 +74,7 @@ Material:
     - _BlendingType: 1
     - _BumpScale: 1
     - _CFXR_DITHERED_SHADOWS: 0
+    - _CFXR_GLOW_POW: 0
     - _CFXR_OVERLAYBLEND: 0
     - _CFXR_OVERLAYTEX: 0
     - _Cutoff: 0.001
@@ -85,11 +87,14 @@ Material:
     - _DstBlend: 10
     - _EdgeFadePow: 1
     - _FadeAlongU: 1
+    - _GlowMax: 1
+    - _GlowMin: 0
     - _HdrBoost: 1
     - _HdrMultiply: 8
     - _IndirectLightingMix: 0.5
     - _InvertDissolveTex: 0
     - _LightingWorldPosStrength: 0.2
+    - _MaxValue: 10
     - _OVERLAYBLEND: 0
     - _OVERLAYTEX: 0
     - _ReceivedShadowsStrength: 0.5

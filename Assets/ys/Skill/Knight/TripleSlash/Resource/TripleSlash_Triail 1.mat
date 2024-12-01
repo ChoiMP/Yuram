@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TripleSlash_Triail 1
-  m_Shader: {fileID: -6465566751694194690, guid: 75d33cf8e974d8f4689ea7793050b8b6, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 1a1fb1229a66bea4f92ab2524375d005, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -18,11 +18,10 @@ Material:
   - _
   - _CFXR_DISSOLVE_ALONG_UV_X
   - _CFXR_DITHERED_SHADOWS_OFF
+  - _CFXR_GLOW_POW_P0
   - _CFXR_OVERLAYBLEND_RGB
   - _CFXR_OVERLAYTEX_OFF
   - _CFXR_SINGLE_CHANNEL
-  - _SINGLECHANNEL_ON
-  - _USEDISSOLVEOFFSETUV_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -38,7 +37,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DissolveTex:
-        m_Texture: {fileID: 2800000, guid: d6752e57641706d4e9444d9a71f43591, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0d30b359af34f9049bdf5863b06dd25f, type: 3}
         m_Scale: {x: 0.5, y: 0.75}
         m_Offset: {x: 0, y: 0}
     - _DistortTex:
@@ -50,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: da8667e0fbb338a43b406bf22647bf6c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 647dd2d88112fc1439dff973d45dfe75, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OverlayTex:
@@ -67,6 +66,7 @@ Material:
     - _BlendingType: 0
     - _BumpScale: 1
     - _CFXR_DITHERED_SHADOWS: 0
+    - _CFXR_GLOW_POW: 0
     - _CFXR_OVERLAYBLEND: 1
     - _CFXR_OVERLAYTEX: 0
     - _Cutoff: 0.1
@@ -80,11 +80,14 @@ Material:
     - _DstBlend: 10
     - _EdgeFadePow: 1
     - _FadeAlongU: 0
+    - _GlowMax: 1
+    - _GlowMin: 0
     - _HdrBoost: 0
     - _HdrMultiply: 0
     - _IndirectLightingMix: 0.5
     - _InvertDissolveTex: 0
     - _LightingWorldPosStrength: 0.2
+    - _MaxValue: 10
     - _OVERLAYBLEND: 0
     - _OVERLAYTEX: 0
     - _SecondColorSmooth: 0.2

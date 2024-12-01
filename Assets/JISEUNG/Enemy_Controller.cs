@@ -13,37 +13,98 @@ public class Enemy_Controller : Status
 
     public GameObject player;
 
-    Vector2 dir;
+    public Vector2 dir;
+
+    public bool lone_Attack_C; // 원거리 공격중 확인
+    public bool bat_Check;
+    private float move_Time = 0.5f;
+    private float setOff_Time = 7f;
+
+    private Rigidbody2D rb;
 
     public override void Start()
     {
         base.Start();
-        player = GameObject.Find("Player");
-
-        player_List = GameObject.FindGameObjectsWithTag("Player");
-        int num = Random.Range(0, player_List.Length);
-        player = player_List[num]; 
-
-       
-    }
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-        if (shild_C)
+        if (bat_Check == false)
         {
-            // 목표 위치 계산
-            Vector3 targetPosition = (Vector3)Enemy_Spawner.instance.cameraCenter;
-            // 방향 벡터 계산 (정규화)
-            Vector3 direction = (targetPosition - transform.position).normalized;
-            // 일정한 속도로 이동
-            transform.position += direction * curSpeed * Time.deltaTime;
+            player = GameObject.Find("Player");
+
+            player_List = GameObject.FindGameObjectsWithTag("Player");
+            int num = Random.Range(0, player_List.Length);
+            player = player_List[num];
         }
         else
         {
+            rb = GetComponent<Rigidbody2D>();
             dir = player.transform.position - transform.position;
-            dir = dir.normalized;
+        }
+    }
 
-            transform.Translate(dir * curSpeed * Time.deltaTime);
+    private void OnEnable()
+    {
+        dir = player.transform.position - transform.position;
+    }
+
+    // Update is called once per frame
+    private void FixedUpdate()
+    {
+        if (lone_Attack_C == false)
+        {
+            if (isLongAttack) // 원거리 적이면
+            {
+                if (player != null)
+                {
+                    dir = player.transform.position - transform.position;
+
+                    if(Vector2.Distance(player.transform.position, transform.position) >= 2f) // 플레이어와 적이 가까우면 정지
+                    {
+                        dir = dir.normalized;
+                        transform.Translate(dir * curSpeed * Time.deltaTime);
+                    }
+                }
+            }
+            else if (shild_C) // 실드 적이면
+            {
+                // 목표 위치 계산
+                Vector3 targetPosition = (Vector3)Enemy_Spawner.instance.cameraCenter;
+                // 방향 벡터 계산 (정규화)
+                Vector3 direction = (targetPosition - transform.position).normalized;
+                // 일정한 속도로 이동
+                transform.position += direction * curSpeed * Time.deltaTime;
+            }
+            else if (bat_Check) // 박쥐
+            {
+                if(move_Time <= 0)
+                {
+                    int rand = Random.Range(0, 4);
+
+                    if (rand == 0) { dir += new Vector2(-0.15f, 0); }
+                    else if (rand == 1) { dir += new Vector2(0.15f, 0); }
+                    else if (rand == 2) { dir += new Vector2(0, 0.15f); }
+                    else if (rand == 3) { dir += new Vector2(0, -0.15f); }
+                    move_Time = 0.5f;
+                }
+                else { move_Time -= Time.deltaTime; }
+
+                rb.velocity = dir * curSpeed * 7 * Time.deltaTime;
+
+                if(setOff_Time <= 0)
+                {
+                    setOff_Time = 5f;
+                    transform.position = new Vector3(0, 0, 0);
+                    gameObject.SetActive(false);
+                }
+                else { setOff_Time -= Time.deltaTime; }
+            }
+            else
+            {
+                if (player != null)
+                {
+                    dir = player.transform.position - transform.position;
+                    dir = dir.normalized;
+                }
+                transform.Translate(dir * curSpeed * Time.deltaTime);
+            }
         }
     }
 
@@ -57,7 +118,7 @@ public class Enemy_Controller : Status
     {
         if(isLongAttack)
         {
-            Collider2D findplayer = Physics2D.OverlapCircle(transform.position, attackRange * 2, attackLayer);
+            Collider2D findplayer = Physics2D.OverlapCircle(transform.position, attackRange, attackLayer);
 
             if (findplayer != null)
             {
@@ -65,23 +126,32 @@ public class Enemy_Controller : Status
 
                 if (attack_obj == null)
                 {
-                    attack_obj = Instantiate(attack_Prefab, transform.position, Quaternion.identity); 
-                    attack_obj.SetDir(dir); 
+                    if(lone_Attack_C == false) { lone_Attack_C = true; StartCoroutine(LongAttack(0)); }
                 }
-            
-
-                if (attack_obj.gameObject.activeSelf==false)
+                else if (attack_obj.gameObject.activeSelf==false)
                 {
-                  
-                    attack_obj.gameObject.SetActive(true); 
-                    attack_obj.transform.position = transform.position; attack_obj.SetDir(dir);
-                    attack_obj.SetDir(dir);
+                    if (lone_Attack_C == false) { lone_Attack_C = true; StartCoroutine(LongAttack(1)); }
                 }
             }
         }
     }
 
-
+    IEnumerator LongAttack(int num)
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        if(num == 0)
+        {
+            attack_obj = Instantiate(attack_Prefab, transform.position, Quaternion.identity);
+            attack_obj.SetDir(dir);
+        }
+        else
+        {
+            attack_obj.gameObject.SetActive(true);
+            attack_obj.transform.position = transform.position; attack_obj.SetDir(dir);
+            attack_obj.SetDir(dir);
+        }
+        lone_Attack_C = false;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

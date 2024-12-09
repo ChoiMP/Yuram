@@ -24,11 +24,18 @@ public class Boss : Status
         base.Start();
     }
 
+    private void OnDisable()
+    {
+        jihoCanvas.Instance.ChangeMusic(jihoCanvas.Instance.soundClip[0]);
+    }
+
     private void Update()
     {
         Boss_Moving();
 
         useAttack();
+
+      
     }
 
     public void Boss_Moving()

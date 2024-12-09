@@ -90,23 +90,23 @@ public class InventoryMouseCheck : MonoBehaviour
         {
             case "hp":
                 relicName.text = "제국의 명령";
-                relicEffect.text = "전체 유닛\n" + "체력 " + "<color=FF0000>" + RelicStatus.instance.applied_HP_Value + "</color>" + " 증가";
+                relicEffect.text = "전체 유닛\n" + "체력 "  + RelicStatus.instance.applied_HP_Value  + " 증가";
                 break;
             case "mp":
                 relicName.text = "영겁의 지팡이";
-                relicEffect.text = "전체 유닛\n" + "마나 " + "<color=FF0000>" + RelicStatus.instance.applied_MP_Value + "</color>" + " 증가";
+                relicEffect.text = "전체 유닛\n" + "마나 " + + RelicStatus.instance.applied_MP_Value +  " 증가";
                 break;
             case "power":
                 relicName.text = "수호 천사";
-                relicEffect.text = "전체 유닛\n" + "공격력 " + "<color=FF0000>" + RelicStatus.instance.applied_POWER_Value + "</color>" + "% 증가";
+                relicEffect.text = "전체 유닛\n" + "공격력 " +  RelicStatus.instance.applied_POWER_Value + "% 증가";
                 break;
             case "skill":
                 relicName.text = "음전자 망토";
-                relicEffect.text = "전체 유닛\n" + "스킬 업그레이드 " + "<color=FF0000>" + RelicStatus.instance.applied_SKILL_Value + "</color>" + " 단계";
+                relicEffect.text = "전체 유닛\n" + "스킬 업그레이드 "  + RelicStatus.instance.applied_SKILL_Value +  " 단계";
                 break;
             case "speed":
                 relicName.text = "망령의 두건";
-                relicEffect.text = "전체 유닛\n" + "속도 " + "<color=FF0000>" + RelicStatus.instance.applied_SPEED_Value + "</color>" + "% 증가";
+                relicEffect.text = "전체 유닛\n" + "속도 " +  RelicStatus.instance.applied_SPEED_Value + "% 증가";
                 break;
         }
     }

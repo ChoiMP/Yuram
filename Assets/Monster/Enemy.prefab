@@ -115,8 +115,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackRange: 0
+  shild_C: 0
+  isLongAttack: 0
+  attack_Prefab: {fileID: 0}
+  attack_obj: {fileID: 0}
   player_List: []
   player: {fileID: 0}
+  dir: {x: 0, y: 0}
+  lone_Attack_C: 0
+  bat_Check: 0
 --- !u!61 &4538572956676080236
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -160,7 +167,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0
 --- !u!50 &3645710098448764291
 Rigidbody2D:

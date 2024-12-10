@@ -21,5 +21,7 @@ public class jihoCanvas : MonoBehaviour
     {
         Time.timeScale = 1;
         main_Title.SetActive(false);
+        SoundManager.Instance.ChangeSound(SoundManager.Instance.audioClips[0]);
     }
 }
+

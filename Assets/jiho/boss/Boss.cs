@@ -14,8 +14,19 @@ public class Boss : Status
     [SerializeField] float pattenTimer;
     [SerializeField] float cur_PattenTimer;
     // Start is called before the first frame update
+
+
+
+
+    private void OnDisable()
+    {
+        SoundManager.Instance.ChangeSound(SoundManager.Instance.audioClips[0]);
+    }
+
     public override void Start()
     {
+        SoundManager.Instance.ChangeSound(SoundManager.Instance.audioClips[1]);
+
         main_Player = Follow_Manager.instance.all_sponed_Unit[0];
 
         dir = main_Player.transform.position - transform.position;

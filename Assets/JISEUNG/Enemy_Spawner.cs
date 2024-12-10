@@ -16,7 +16,7 @@ public class Enemy_Spawner : MonoBehaviour
     public float spawn_Time; // 생성 주기
 
     public List<GameObject> spawned_Enemy; // 생성된 적 리스트
-    
+
     public int spawn_Count; // 생성된 횟수
 
     [Header("플레이어 주위로 생성될 적")]
@@ -33,6 +33,11 @@ public class Enemy_Spawner : MonoBehaviour
     public Vector2 cameraCenter;
     public GameObject[] player_List;
 
+    [Header("보스")]
+    public GameObject boss_Ob;
+    public float boss_Time = 20f; // 보스 스폰 시간
+    private bool boss_C = false;
+
     private void Awake()
     {
         instance = this;
@@ -46,8 +51,23 @@ public class Enemy_Spawner : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {  
-        if(bat_Time <= 0)
+    {
+        if (boss_C == false)
+        {
+            if (boss_Time <= 0)
+            {
+                int spawn_Point_Num = Random.Range(0, spanwer_Point.Length);
+
+                Vector2 pos = new Vector2(spanwer_Point[spawn_Point_Num].transform.position.x, spanwer_Point[spawn_Point_Num].transform.position.y);
+
+                GameObject boss = Instantiate(boss_Ob, pos, Quaternion.identity);
+                boss_C = true;
+            }
+
+            else { boss_Time -= Time.deltaTime; }
+        }
+
+        if (bat_Time <= 0)
         {
             int num = Random.Range(0, player_List.Length);
             GameObject player = player_List[num];
@@ -66,7 +86,7 @@ public class Enemy_Spawner : MonoBehaviour
                 }
             }
 
-            if(on_Bat.Count >= bat_Count)
+            if (on_Bat.Count >= bat_Count)
             {
                 for (int i = 0; i < bat_Count; i++)
                 {
@@ -95,7 +115,7 @@ public class Enemy_Spawner : MonoBehaviour
                     }
                 }
             }
-           
+
             bat_Time = 10f;
         }
         else
@@ -103,7 +123,7 @@ public class Enemy_Spawner : MonoBehaviour
             bat_Time -= Time.deltaTime;
         }
 
-        if(spawn_Time <= 0)
+        if (spawn_Time <= 0)
         {
             spawn_Count++;
             if (spawn_Count == 5) // 특정 횟수만큼 소환했으면
@@ -115,7 +135,7 @@ public class Enemy_Spawner : MonoBehaviour
             int spawn_Point_Num = 0; // 랜덤 생성 위치
             int spawn_Ememy_Num = 0; // 랜덤 생성 적
 
-            for(int i = 0; i <= spawn_Count_; i++)
+            for (int i = 0; i <= spawn_Count_; i++)
             {
                 spawn_Point_Num = Random.Range(0, spanwer_Point.Length);
                 spawn_Ememy_Num = Random.Range(0, spawn_Enemy.Length);
@@ -124,14 +144,14 @@ public class Enemy_Spawner : MonoBehaviour
                 {
                     if (spawned_Enemy[j].activeSelf == false)
                     {
-                        spawned_Enemy[j].transform.position = Return_RandomPosition(spanwer_Point[spawn_Point_Num]);
+                        spawned_Enemy[j].transform.position = spanwer_Point[spawn_Point_Num].transform.position;
                         spawned_Enemy[j].SetActive(true);
                         break;
                     }
                 }
-                if(j == spawned_Enemy.Count)
+                if (j == spawned_Enemy.Count)
                 {
-                    GameObject clone = Instantiate(spawn_Enemy[spawn_Ememy_Num], Return_RandomPosition(spanwer_Point[spawn_Point_Num]), Quaternion.identity);
+                    GameObject clone = Instantiate(spawn_Enemy[spawn_Ememy_Num], new Vector2(spanwer_Point[spawn_Point_Num].transform.position.x, spanwer_Point[spawn_Point_Num].transform.position.y), Quaternion.identity);
                     spawned_Enemy.Add(clone);
                 }
             }
@@ -142,25 +162,25 @@ public class Enemy_Spawner : MonoBehaviour
             spawn_Time -= Time.deltaTime;
         }
 
-        
+
     }
 
-    Vector2 Return_RandomPosition(GameObject rangeObject)
-    {
-        Vector3 originPosition = rangeObject.transform.position;
-        BoxCollider2D rangeCollider = rangeObject.GetComponent<BoxCollider2D>();
+    /* Vector2 Return_RandomPosition(GameObject rangeObject)
+     {
+         Vector3 originPosition = rangeObject.transform.position;
+         BoxCollider2D rangeCollider = rangeObject.GetComponent<BoxCollider2D>();
 
-        // 콜라이더의 사이즈를 가져오는 bound.size 사용
-        float range_X = rangeCollider.bounds.size.x;
-        float range_Z = rangeCollider.bounds.size.z;
+         // 콜라이더의 사이즈를 가져오는 bound.size 사용
+         float range_X = rangeCollider.bounds.size.x;
+         float range_Z = rangeCollider.bounds.size.z;
 
-        range_X = Random.Range((range_X / 2) * -1, range_X / 2);
-        range_Z = Random.Range((range_Z / 2) * -1, range_Z / 2);
-        Vector3 RandomPostion = new Vector3(range_X, 0f, range_Z);
+         range_X = Random.Range((range_X / 2) * -1, range_X / 2);
+         range_Z = Random.Range((range_Z / 2) * -1, range_Z / 2);
+         Vector3 RandomPostion = new Vector3(range_X, 0f, range_Z);
 
-        Vector3 respawnPosition = originPosition + RandomPostion;
-        return respawnPosition;
-    }
+         Vector3 respawnPosition = originPosition + RandomPostion;
+         return respawnPosition;
+     }*/
 
     void SpawnEnemiesAroundPlayer()
     {

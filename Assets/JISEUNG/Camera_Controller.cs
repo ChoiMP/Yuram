@@ -8,6 +8,11 @@ public class Camera_Controller : MonoBehaviour
 
     public GameObject player;
 
+    private void Start()
+    {
+        player = Follow_Manager.instance.all_sponed_Unit[0].gameObject;
+    }
+
     private void LateUpdate()
     {
         Vector3 dir = player.transform.position - this.transform.position;

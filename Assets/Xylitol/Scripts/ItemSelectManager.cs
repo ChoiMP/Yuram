@@ -57,19 +57,18 @@ public class ItemSelectManager : MonoBehaviour
 
     public void SelectBoxOn()
     {
-        if ((player.playerXp % 5) == 0)
+        selectBox.transform.localScale = Vector3.one;
+        isSelectMode = true;
+        Vector3 ScreenCenter = new Vector3(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2, 1);
+        boxOpenEffect.transform.position = uiCam.ScreenToWorldPoint(ScreenCenter);
+        boxOpenEffect.SetActive(true);
+        if (boxOpenEffect.transform.childCount == 0)
         {
-            selectBox.transform.localScale = Vector3.one;
-            isSelectMode = true;
-            Vector3 ScreenCenter = new Vector3(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2, 1);
-             boxOpenEffect.transform.position = uiCam.ScreenToWorldPoint(ScreenCenter);
-            boxOpenEffect.SetActive(true);
-            if (boxOpenEffect.transform.childCount == 0)
-            {
-                GameObject ptc = Instantiate(particle);
-                ptc.transform.parent = boxOpenEffect.transform; 
-            }
+            GameObject ptc = Instantiate(particle);
+            ptc.transform.parent = boxOpenEffect.transform;
         }
+        GameManager.instance.PauseGame();
+        GameManager.instance.AudioPlay("open");
     }
 
     public void SelectBoxOff() 
@@ -80,6 +79,7 @@ public class ItemSelectManager : MonoBehaviour
         itemTrigger = 1;
         isSelectMode = false;
         boxOpenEffect.SetActive(false);
+        GameManager.instance.continueGame();
 
     }
 
@@ -91,11 +91,7 @@ public class ItemSelectManager : MonoBehaviour
             if (time <= 0)
             {
                 //selectBox.SetActive(false);
-                selectBox.transform.localScale = Vector3.zero;
-                isSelectMode = false;
-                SetItemsInit();
-                randTrigger = 1;
-                itemTrigger = 1;
+                SelectBoxOff();
             }
         }
 

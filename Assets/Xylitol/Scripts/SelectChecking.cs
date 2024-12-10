@@ -62,6 +62,7 @@ public class SelectChecking : MonoBehaviour, IPointerClickHandler
         {
             Instantiate(selectEffect, target, Quaternion.identity);
             StartCoroutine(CloseBox());
+            GameManager.instance.AudioPlay("select");
 
             Follow_Manager fm = Follow_Manager.instance;
             int unitCount = fm.all_sponed_Unit.Count; //유닛 수
@@ -135,7 +136,7 @@ public class SelectChecking : MonoBehaviour, IPointerClickHandler
 
         IEnumerator CloseBox()
         {
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.1f);
             gm.GetComponent<ItemSelectManager>().SelectBoxOff();
 
         }

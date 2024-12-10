@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI xpText;
     public int xp;
     ItemSelectManager itemSelc;
-    public int nextLevel = 10;
+    public int nextLevel = 20;
+
+    public AudioSource openAudio;
+    public AudioSource selectAudio;
 
     private void Awake()
     {
@@ -28,12 +31,52 @@ public class GameManager : MonoBehaviour
 
             itemSelc.SelectBoxOn();
             itemSelc.SetItmes();
-            nextLevel += 10;
+            nextLevel += 20;
         }
     }
 
     void XpTextManage()
     {
         xpText.text = "XP: " + xp.ToString();
+    }
+
+
+
+    public void PauseGame()
+    {
+        int units = Follow_Manager.instance.all_sponed_Unit.Count;
+        for(int i =0; i<units; i++)
+        {
+            Follow_Manager.instance.all_sponed_Unit[i].gameObject.tag = "Untagged";
+            Follow_Manager.instance.all_sponed_Unit[i].gameObject.SetActive(false);
+        }
+        Enemy_Spawner.instance.GetComponent<Enemy_Spawner>().enabled = false;
+    }
+
+    public void continueGame()
+    {
+        int units = Follow_Manager.instance.all_sponed_Unit.Count;
+        for (int i = 0; i < units; i++)
+        {
+            Follow_Manager.instance.all_sponed_Unit[i].gameObject.tag = "Player";
+            Follow_Manager.instance.all_sponed_Unit[i].gameObject.SetActive(true);
+
+        }
+        Enemy_Spawner.instance.GetComponent<Enemy_Spawner>().enabled = true;
+    }
+
+
+    public void AudioPlay(string a)
+    {
+        switch (a) 
+        {
+            case "open":
+                openAudio.Play();
+                break;
+
+            case "select":
+                selectAudio.Play();
+                break;
+        }
     }
 }

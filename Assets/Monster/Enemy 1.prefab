@@ -109,14 +109,21 @@ MonoBehaviour:
   curDamege: 0
   attackDelay: 0
   curAttackDelay: 0
-  f_Speed: 0.1
+  f_Speed: 0.5
   curSpeed: 0
   attackLayer:
     serializedVersion: 2
     m_Bits: 64
   attackRange: 0
+  shild_C: 0
+  isLongAttack: 0
+  attack_Prefab: {fileID: 0}
+  attack_obj: {fileID: 0}
   player_List: []
   player: {fileID: 0}
+  dir: {x: 0, y: 0}
+  lone_Attack_C: 0
+  bat_Check: 0
 --- !u!61 &4538572956676080236
 BoxCollider2D:
   m_ObjectHideFlags: 0

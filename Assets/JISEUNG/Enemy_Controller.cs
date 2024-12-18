@@ -52,6 +52,13 @@ public class Enemy_Controller : Status
     // Update is called once per frame
     private void FixedUpdate()
     {
+        if (ItemSelectManager.isSelectMode == true)
+        {
+            return;
+        }
+
+
+
         if (lone_Attack_C == false)
         {
             if (isLongAttack) // 원거리 적이면

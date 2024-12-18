@@ -44,6 +44,16 @@ public class Boss : Status
 
     public void Boss_Moving()
     {
+
+        if(ItemSelectManager.isSelectMode==true)
+        {
+            return;
+        }
+
+
+
+
+
         if(main_Player==null)
         {
             main_Player = Follow_Manager.instance.all_sponed_Unit[0];

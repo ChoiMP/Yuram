@@ -27,6 +27,10 @@ public class Status : MonoBehaviour
     [SerializeField] protected LayerMask attackLayer;
     [SerializeField] protected float attackRange;
 
+
+
+    
+
     private void Awake()
     {
         init();
